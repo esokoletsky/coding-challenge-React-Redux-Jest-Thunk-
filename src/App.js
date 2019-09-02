@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import Search from "./Search";
 import { Component } from "react";
 
 export default class App extends Component {
@@ -29,6 +30,7 @@ export default class App extends Component {
     ));
     return (
       <div>
+        <Search />
         <table>
           <tr>
             <th>Name</th>
