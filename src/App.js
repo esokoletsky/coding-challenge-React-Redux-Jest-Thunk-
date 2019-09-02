@@ -1,9 +1,44 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { Component } from "react";
 
-function App() {
-  return <div></div>;
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: []
+    };
+  }
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(res => res.json())
+      .then(data =>
+        this.setState({
+          user: data
+        })
+      );
+  }
+  render() {
+    const postUsers = this.state.user.map(user => (
+      <tr>
+        <td>{user.name}</td>
+        <td>{user.email}</td>
+        <td>{user.address.city}</td>
+        <td>{user.company.name}</td>
+      </tr>
+    ));
+    return (
+      <div>
+        <table>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>City</th>
+            <th>Company</th>
+          </tr>
+          {postUsers}
+        </table>
+      </div>
+    );
+  }
 }
-
-export default App;
