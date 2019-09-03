@@ -19,6 +19,7 @@ export default class App extends Component {
         })
       );
   }
+
   render() {
     const postUsers = this.state.user.map(user => (
       <tr>

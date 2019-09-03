@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Suggestions from "./Suggestions";
 
 export default class Search extends Component {
   state = {
@@ -11,7 +12,7 @@ export default class Search extends Component {
       .then(res => res.json())
       .then(data =>
         this.setState({
-          user: data
+          results: data
         })
       );
   };
@@ -38,7 +39,7 @@ export default class Search extends Component {
           ref={input => (this.search = input)}
           onChange={this.handleInputChange}
         />
-        <p>{this.state.query}</p>
+        <Suggestions results={this.state.results} />
       </form>
     );
   }
